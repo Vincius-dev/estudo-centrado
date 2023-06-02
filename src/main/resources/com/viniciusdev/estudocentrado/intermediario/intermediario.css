@@ -1,0 +1,72 @@
+/* CSS da fonte */
+.titulos {
+    -fx-text-fill: #FEFBF6;
+    -fx-font-size: 52px;
+}
+
+.subtitulos {
+    -fx-text-fill: #2F2727;
+    -fx-font-size: 22px;
+}
+
+.textos_normais {
+    -fx-text-fill: #2F2727;
+    -fx-font-size: 18px;
+}
+
+.textos_pequenos {
+    -fx-text-fill: #2F2727;
+    -fx-font-size: 14px;
+}
+
+.mensagens_erro {
+    -fx-text-fill: #D07D7B;
+    -fx-font-size: 14px;
+}
+
+.fundo_um {
+    -fx-background-color: #F8ECDC;
+}
+
+.fundo_dois {
+    -fx-background-color: #FEFBF6;
+}
+
+.label_mensagem {
+    -fx-background-color: #C4C8EE;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font-size: 18px;
+}
+
+.anchorImage {
+    -fx-background-color: #7B81CA;
+}
+
+.anchorLogin {
+    -fx-background-color: #F8ECDC;
+}
+
+.text-field {
+    -fx-background-color:transparent;
+    -fx-border-color: #C4C8EE;
+    -fx-border-width: 0px 0px 1px;
+}
+
+.button:hover {
+    -fx-background-color: #D35E5B;
+}
+
+.button:pressed {
+    -fx-background-color: #FEFBF6;
+    -fx-border-color: #D07D7B;
+    -fx-text-fill: #D07D7B;
+}
+
+.button {
+    -fx-background-color: #D07D7B;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-text-fill: #FEFBF6;
+    -fx-font-size: 18px;
+}
