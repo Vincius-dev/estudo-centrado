@@ -1,7 +1,9 @@
 package com.viniciusdev.estudocentrado.controllers;
 
-
 import com.viniciusdev.estudocentrado.App;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
+
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,20 +13,41 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.security.SecureRandom;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import java.util.Scanner;
 
 public class LoginController implements Initializable {
     @FXML
     private Button loginButton;
 
     @FXML
+    private TextField textFieldEmail;
+
+    @FXML
+    private TextField textFieldPassword;
+
+    @FXML
     private void loadInterfaceIntermediaria(ActionEvent event) {
+
+        String textEmail = textFieldEmail.getText();
+        String textPassword = textFieldPassword.getText();
+
+        System.out.println(textEmail);
+        System.out.println(textPassword);
+
+        verifyHashedPassword(textPassword);
+
+        realizeTransition(event);
+    }
+
+    private void realizeTransition(ActionEvent event){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/viniciusdev/estudocentrado/intermediario/intermediario.fxml"));
             Parent root = loader.load();
@@ -49,6 +72,21 @@ public class LoginController implements Initializable {
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+    }
+
+    private Boolean verifyHashedPassword(String password){
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+
+        String hash = argon2.hash(10, 65536, 1, password);
+
+        if (argon2.verify(hash, password)){
+            System.out.println("A senha digitada esta correta");
+            return true;
+        }
+        else{
+            return false;
         }
     }
 

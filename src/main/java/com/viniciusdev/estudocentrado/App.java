@@ -15,7 +15,6 @@ public class App extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 840, 420);
         stage.setResizable(false);
         stage.initStyle(StageStyle.UTILITY);
-        stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
     }
