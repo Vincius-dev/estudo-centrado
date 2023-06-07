@@ -47,6 +47,34 @@ public class LoginController implements Initializable {
         realizeTransition(event);
     }
 
+    public void loadInterfaceCadastro(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/viniciusdev/estudocentrado/cadastro/cadastro.fxml"));
+            Parent root = loader.load();
+
+            // Criar uma transição de fade
+            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.5), root);
+            fadeTransition.setFromValue(0);
+            fadeTransition.setToValue(1);
+            fadeTransition.play();
+
+            Scene scene = new Scene(root, 840, 420);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Adicionar um listener para executar a transição de fade antes de trocar a cena
+            fadeTransition.setOnFinished(e -> {
+                stage.setScene(scene);
+                stage.show();
+            });
+
+            // Iniciar a transição de fade
+            fadeTransition.play();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void realizeTransition(ActionEvent event){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/viniciusdev/estudocentrado/intermediario/intermediario.fxml"));
@@ -94,4 +122,6 @@ public class LoginController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
+
 }

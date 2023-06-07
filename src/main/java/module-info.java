@@ -5,6 +5,7 @@ module com.viniciusdev.estudocentrado {
     requires com.sun.jna;
     requires java.sql;
 
+
     opens com.viniciusdev.estudocentrado.controllers to javafx.fxml;
 
     exports com.viniciusdev.estudocentrado;
