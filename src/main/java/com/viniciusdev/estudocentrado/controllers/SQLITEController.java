@@ -16,4 +16,7 @@ public class SQLITEController {
         sqlite.createStudent(student);
     }
 
+    public Student receiveStudent(String mail){
+        return sqlite.selectStudent(mail);
+    }
 }

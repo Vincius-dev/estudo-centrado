@@ -123,8 +123,29 @@ public class SQLITE {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
 
+    public Student selectStudent(String mail){
+        Student student = new Student();
 
+        try {
+            Connection conn = this.connect();
+            String sql_select = "SELECT * FROM student WHERE mailStudent = ?";
+            PreparedStatement statement = conn.prepareStatement(sql_select);
+            statement.setString(1, mail);
 
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                student.setNameStudent(resultSet.getString("nameStudent"));
+                student.setMailStudent(resultSet.getString("mailStudent"));
+                student.setPasswordStudent(resultSet.getString("passwordStudent"));
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return student;
     }
 }

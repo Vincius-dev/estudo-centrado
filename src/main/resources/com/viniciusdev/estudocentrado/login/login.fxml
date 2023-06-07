@@ -32,7 +32,7 @@
             <PasswordField fx:id="textFieldPassword" layoutX="140.0" layoutY="164.0" prefHeight="28.0" prefWidth="188.0" />
             <Button id="loginButton" layoutX="86.0" layoutY="254.0" mnemonicParsing="false" onAction="#loadInterfaceIntermediaria" prefHeight="38.0" prefWidth="240.0" text="Conectar" />
             <Button id="registerButton" layoutX="86.0" layoutY="319.0" mnemonicParsing="false" onAction="#loadInterfaceCadastro" prefHeight="38.0" prefWidth="240.0" text="Cadastrar" />
-            <Label layoutX="130.0" layoutY="210.0" prefHeight="27.0" prefWidth="153.0" styleClass="mensagens_erro" text="Senha ou Email Inválido" visible="false" />
+            <Label fx:id="labelErrorMessage" layoutX="130.0" layoutY="210.0" prefHeight="27.0" prefWidth="153.0" styleClass="mensagens_erro" text="Senha ou Email Inválido" visible="false" />
             <Label layoutX="140.0" layoutY="292.0" prefHeight="27.0" prefWidth="133.0" styleClass="textos_pequenos" text="Esqueci minha senha" />
          </children>
       </AnchorPane>

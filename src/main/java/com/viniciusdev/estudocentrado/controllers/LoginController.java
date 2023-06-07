@@ -1,6 +1,7 @@
 package com.viniciusdev.estudocentrado.controllers;
 
 import com.viniciusdev.estudocentrado.App;
+import com.viniciusdev.estudocentrado.models.Student;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 
@@ -13,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -26,12 +28,12 @@ import java.util.Scanner;
 public class LoginController implements Initializable {
     @FXML
     private Button loginButton;
-
     @FXML
     private TextField textFieldEmail;
-
     @FXML
     private TextField textFieldPassword;
+    @FXML
+    private Label labelErrorMessage;
 
     @FXML
     private void loadInterfaceIntermediaria(ActionEvent event) {
@@ -42,9 +44,18 @@ public class LoginController implements Initializable {
         System.out.println(textEmail);
         System.out.println(textPassword);
 
-        verifyHashedPassword(textPassword);
+        SQLITEController sqliteController = new SQLITEController();
 
-        realizeTransition(event);
+        Student student = sqliteController.receiveStudent(textEmail);
+        String hashedPassword = student.getPasswordStudent();
+
+        if (verifyHashedPassword(textPassword, hashedPassword)){
+            realizeTransition(event);
+        } else {
+            labelErrorMessage.setVisible(true);
+        }
+
+
     }
 
     public void loadInterfaceCadastro(ActionEvent event) {
@@ -104,10 +115,8 @@ public class LoginController implements Initializable {
 
     }
 
-    private Boolean verifyHashedPassword(String password){
+    private Boolean verifyHashedPassword(String password, String hash){
         Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
-
-        String hash = argon2.hash(10, 65536, 1, password);
 
         if (argon2.verify(hash, password)){
             System.out.println("A senha digitada esta correta");
