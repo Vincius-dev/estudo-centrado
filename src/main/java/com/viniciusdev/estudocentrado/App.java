@@ -1,5 +1,6 @@
 package com.viniciusdev.estudocentrado;
 
+import com.viniciusdev.estudocentrado.controllers.SQLITEController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,6 +18,9 @@ public class App extends Application {
         stage.initStyle(StageStyle.UTILITY);
         stage.setScene(scene);
         stage.show();
+
+        SQLITEController sqliteController = new SQLITEController();
+        sqliteController.createDatabaseAndTables();
     }
 
     public static void main(String[] args) {
