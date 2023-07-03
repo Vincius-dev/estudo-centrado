@@ -22,7 +22,7 @@
             <Label alignment="CENTER" prefHeight="32.0" prefWidth="840.0" styleClass="subtitulos" text="Assuntos que deseja estudar" textAlignment="CENTER" />
             <Button fx:id="btnAdicionar" layoutX="586.0" layoutY="38.0" mnemonicParsing="false" onAction="#addSubject" prefHeight="38.0" prefWidth="240.0" text="Adicionar" />
             <Button fx:id="btnRemover" layoutX="586.0" layoutY="84.0" mnemonicParsing="false" onAction="#removeSubject" prefHeight="38.0" prefWidth="240.0" text="Remover" />
-            <Button fx:id="btnSair" layoutX="586.0" layoutY="177.0" mnemonicParsing="false" onAction="#returnToLogin" prefHeight="38.0" prefWidth="240.0" text="Sair" />
+            <Button fx:id="btnSair" layoutX="586.0" layoutY="177.0" mnemonicParsing="false" onAction="#returnToLogin" prefHeight="38.0" prefWidth="240.0" text="Retornar ao Login" />
             <TableView fx:id="tbSubjects" layoutX="22.0" layoutY="47.0" prefHeight="181.0" prefWidth="531.0" />
             <TextField fx:id="txfNameSubject" layoutX="128.0" layoutY="242.0" prefHeight="26.0" prefWidth="196.0" />
             <Label layoutX="64.0" layoutY="242.0" prefHeight="27.0" prefWidth="64.0" styleClass="label_mensagem" text=" Nome: " />
@@ -39,10 +39,10 @@
    <center>
       <AnchorPane prefHeight="184.0" prefWidth="840.0" styleClass="fundo_dois" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="217.0" layoutY="19.0" prefHeight="68.0" prefWidth="188.0" styleClass="label_mensagem" text="Quantos dias deseja estudar por semana?" textAlignment="CENTER" wrapText="true" />
-            <Label layoutX="217.0" layoutY="97.0" prefHeight="68.0" prefWidth="188.0" styleClass="label_mensagem" text="Quantas horas deseja estudar por semana?" textAlignment="CENTER" wrapText="true" />
-            <TextField layoutX="428.0" layoutY="61.0" prefWidth="196.0" />
-            <TextField layoutX="428.0" layoutY="139.0" prefWidth="196.0" />
+            <Label layoutX="279.0" layoutY="18.0" prefHeight="68.0" prefWidth="188.0" styleClass="label_mensagem" text="Quantos dias deseja estudar por semana?" textAlignment="CENTER" wrapText="true" />
+            <Label layoutX="279.0" layoutY="96.0" prefHeight="68.0" prefWidth="188.0" styleClass="label_mensagem" text="Quantas horas deseja estudar por dia?" textAlignment="CENTER" wrapText="true" />
+            <TextField fx:id="lblDaysPerWeek" layoutX="490.0" layoutY="60.0" prefHeight="26.0" prefWidth="71.0" />
+            <TextField fx:id="lblHoursPerWeek" layoutX="490.0" layoutY="138.0" prefHeight="26.0" prefWidth="72.0" />
          </children>
       </AnchorPane>
    </center>

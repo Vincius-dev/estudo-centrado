@@ -1,12 +1,15 @@
 package com.viniciusdev.estudocentrado.models;
 
+import java.util.ArrayList;
+
 public class Student {
 
-    String nameStudent;
-    String mailStudent;
-    String passwordStudent;
-    Integer numberDaysPerWeek;
-    Integer numberHoursPerDay;
+    private String nameStudent;
+    private String mailStudent;
+    private String passwordStudent;
+    private Integer numberDaysPerWeek;
+    private Integer numberHoursPerDay;
+    private ArrayList<Subject> arrayList;
 
     public Student(String nameStudent, String mailStudent, String passwordStudent) {
         this.nameStudent = nameStudent;
@@ -54,5 +57,21 @@ public class Student {
 
     public void setNumberHoursPerDay(Integer numberHoursPerDay) {
         this.numberHoursPerDay = numberHoursPerDay;
+    }
+
+    public void setArrayList(ArrayList<Subject> arrayList) {
+        this.arrayList = arrayList;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "nameStudent='" + nameStudent + '\'' +
+                ", mailStudent='" + mailStudent + '\'' +
+                ", passwordStudent='" + passwordStudent + '\'' +
+                ", numberDaysPerWeek=" + numberDaysPerWeek +
+                ", numberHoursPerDay=" + numberHoursPerDay +
+                ", arrayList=" + arrayList +
+                '}';
     }
 }

@@ -1,15 +1,26 @@
 package com.viniciusdev.estudocentrado.controllers;
 
+import com.viniciusdev.estudocentrado.models.Student;
 import com.viniciusdev.estudocentrado.models.Subject;
+import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class IntermediaryController implements Initializable {
@@ -22,7 +33,12 @@ public class IntermediaryController implements Initializable {
     public ChoiceBox cbRelated;
     @FXML
     public ChoiceBox cbRelevance;
+    @FXML
     public Button btnConcluir;
+    @FXML
+    public TextField lblDaysPerWeek;
+    @FXML
+    public TextField lblHoursPerWeek;
     @FXML
     private TableView<Subject> tbSubjects;
     @FXML
@@ -37,6 +53,8 @@ public class IntermediaryController implements Initializable {
     private TableColumn related;
     private TableColumn dificult;
     private TableColumn relevance;
+
+    private Student student;
 
 
     @Override
@@ -89,11 +107,51 @@ public class IntermediaryController implements Initializable {
     }
 
     public void removeSubject(ActionEvent event) {
+        Subject selectedItem = tbSubjects.getSelectionModel().getSelectedItem();
+        tbSubjects.getItems().remove(selectedItem);
     }
 
     public void returnToLogin(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/viniciusdev/estudocentrado/login/login.fxml"));
+            Parent root = loader.load();
+
+            // Criar uma transição de fade
+            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.5), root);
+            fadeTransition.setFromValue(0);
+            fadeTransition.setToValue(1);
+            fadeTransition.play();
+
+            Scene scene = new Scene(root, 840, 420);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Adicionar um listener para executar a transição de fade antes de trocar a cena
+            fadeTransition.setOnFinished(e -> {
+                stage.setScene(scene);
+                stage.show();
+            });
+
+            // Iniciar a transição de fade
+            fadeTransition.play();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void concluir(ActionEvent event) {
+
+        student.setNumberHoursPerDay(Integer.valueOf(lblHoursPerWeek.getText()));
+        student.setNumberDaysPerWeek(Integer.valueOf(lblDaysPerWeek.getText()));
+
+        ObservableList<Subject> observableList = tbSubjects.getItems();
+        student.setArrayList(new ArrayList<>(observableList));
+
+        System.out.println(student);
+    }
+
+    public void receiveStudent(Student student){
+        this.student = student;
     }
 }

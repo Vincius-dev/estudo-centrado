@@ -35,25 +35,30 @@ public class LoginController implements Initializable {
     @FXML
     private Label labelErrorMessage;
 
+    private Student student;
+
     @FXML
     private void loadInterfaceIntermediaria(ActionEvent event) {
-
         String textEmail = textFieldEmail.getText();
         String textPassword = textFieldPassword.getText();
 
         SQLITEController sqliteController = new SQLITEController();
 
-        Student student = sqliteController.receiveStudent(textEmail);
+        student = sqliteController.receiveStudent(textEmail);
         String hashedPassword = student.getPasswordStudent();
 
-        if (verifyHashedPassword(textPassword, hashedPassword)){
-            realizeTransition(event);
-        } else {
+        try {
+            if (verifyHashedPassword(textPassword, hashedPassword)) {
+                realizeTransition(event);
+            } else {
+                labelErrorMessage.setVisible(true);
+            }
+        } catch (NullPointerException e) {
+            // Handle the exception
             labelErrorMessage.setVisible(true);
         }
-
-
     }
+
 
     public void loadInterfaceCadastro(ActionEvent event) {
         try {
@@ -87,6 +92,9 @@ public class LoginController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/viniciusdev/estudocentrado/intermediario/intermediario.fxml"));
             Parent root = loader.load();
+
+            IntermediaryController intermediaryController = loader.getController();
+            intermediaryController.receiveStudent(student);
 
             // Criar uma transição de fade
             FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.5), root);

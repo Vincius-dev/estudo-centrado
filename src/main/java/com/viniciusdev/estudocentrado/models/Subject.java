@@ -29,4 +29,9 @@ public class Subject {
     public String getSubjectRelevance() {
         return subjectRelevance;
     }
+
+    @Override
+    public String toString() {
+        return subjectName;
+    }
 }
