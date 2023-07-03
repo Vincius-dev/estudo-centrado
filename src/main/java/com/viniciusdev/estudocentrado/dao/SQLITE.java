@@ -37,7 +37,7 @@ public class SQLITE {
                     "idStudent INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "nameStudent TEXT NOT NULL," +
                     "numberDaysPerWeek INTEGER," +
-                    "numberHoursPerWeek INTEGER," +
+                    "numberHoursPerDay INTEGER," +
                     "mailStudent TEXT NOT NULL," +
                     "passwordStudent TEXT NOT NULL" +
                 ");";
@@ -140,6 +140,8 @@ public class SQLITE {
                 student.setNameStudent(resultSet.getString("nameStudent"));
                 student.setMailStudent(resultSet.getString("mailStudent"));
                 student.setPasswordStudent(resultSet.getString("passwordStudent"));
+                student.setNumberHoursPerDay(resultSet.getInt("numberHoursPerDay"));
+                student.setNumberDaysPerWeek(resultSet.getInt("numberDaysPerWeek"));
             }
 
         } catch (SQLException e) {

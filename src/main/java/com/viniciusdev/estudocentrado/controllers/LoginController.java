@@ -41,9 +41,6 @@ public class LoginController implements Initializable {
         String textEmail = textFieldEmail.getText();
         String textPassword = textFieldPassword.getText();
 
-        System.out.println(textEmail);
-        System.out.println(textPassword);
-
         SQLITEController sqliteController = new SQLITEController();
 
         Student student = sqliteController.receiveStudent(textEmail);
@@ -97,7 +94,7 @@ public class LoginController implements Initializable {
             fadeTransition.setToValue(1);
             fadeTransition.play();
 
-            Scene scene = new Scene(root, 840, 528);
+            Scene scene = new Scene(root, 840, 600);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
             // Adicionar um listener para executar a transição de fade antes de trocar a cena

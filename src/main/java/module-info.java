@@ -7,6 +7,8 @@ module com.viniciusdev.estudocentrado {
 
 
     opens com.viniciusdev.estudocentrado.controllers to javafx.fxml;
+    opens com.viniciusdev.estudocentrado.models to javafx.base;
+
 
     exports com.viniciusdev.estudocentrado;
 }

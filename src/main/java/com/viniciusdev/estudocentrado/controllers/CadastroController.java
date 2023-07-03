@@ -41,14 +41,10 @@ public class CadastroController implements Initializable {
 
     public void Register(ActionEvent event) {
 
-
         String name = textFieldName.getText();
         String mail = textFieldEmail.getText();
         String password1 = textFieldPassword.getText();
         String password2 = textFieldPassword2.getText();
-
-        System.out.println(password1);
-        System.out.println(password2);
 
         if (password1.equals(password2)){
 
@@ -64,8 +60,6 @@ public class CadastroController implements Initializable {
         } else {
             labelMessage.setVisible(true);
         }
-
-
     }
 
     private void realizeTransition(ActionEvent event){

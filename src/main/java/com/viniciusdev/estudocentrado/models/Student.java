@@ -6,7 +6,7 @@ public class Student {
     String mailStudent;
     String passwordStudent;
     Integer numberDaysPerWeek;
-    Integer getNumberHoursPerWeek;
+    Integer numberHoursPerDay;
 
     public Student(String nameStudent, String mailStudent, String passwordStudent) {
         this.nameStudent = nameStudent;
@@ -48,11 +48,11 @@ public class Student {
         this.numberDaysPerWeek = numberDaysPerWeek;
     }
 
-    public Integer getGetNumberHoursPerWeek() {
-        return getNumberHoursPerWeek;
+    public Integer getNumberHoursPerDay() {
+        return numberHoursPerDay;
     }
 
-    public void setGetNumberHoursPerWeek(Integer getNumberHoursPerWeek) {
-        this.getNumberHoursPerWeek = getNumberHoursPerWeek;
+    public void setNumberHoursPerDay(Integer numberHoursPerDay) {
+        this.numberHoursPerDay = numberHoursPerDay;
     }
 }

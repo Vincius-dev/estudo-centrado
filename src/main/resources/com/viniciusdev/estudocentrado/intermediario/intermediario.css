@@ -70,3 +70,10 @@
     -fx-text-fill: #FEFBF6;
     -fx-font-size: 18px;
 }
+
+.table-view {
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #FEFBF6;
+    -fx-border-width: 1px;
+}
